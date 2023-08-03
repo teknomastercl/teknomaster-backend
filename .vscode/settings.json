@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.deploySubpath": ".",
+    "appService.defaultWebAppToDeploy": "/subscriptions/19336bdc-2f5a-4924-a442-306b947011dd/resourceGroups/global/providers/Microsoft.Web/sites/matchpadel-backend"
+}
