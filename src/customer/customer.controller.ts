@@ -12,6 +12,11 @@ export class CustomerController {
     return { customer };
   }
 
+  @Post('create')
+  async create(@Body() dto: UpdateCustomerDto) {
+    return await this.customerService.update(dto);
+  }
+
   @Get('search')
   async findAll(@Query() params) {
     const customers = await this.customerService.findAll(params.value);
@@ -21,4 +26,5 @@ export class CustomerController {
   async update(@Body() dto: UpdateCustomerDto) {
     return await this.customerService.update(dto);
   }
+
 }
