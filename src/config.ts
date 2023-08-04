@@ -4,24 +4,24 @@ const DB_DEV = {
   DB: {
     host: 'localhost',
     username: 'root',
-    password: 'eventos_party_0112',
-    database: 'vacilar_dev',
+    password: 'Servicios_1803',
+    database: 'teknomaster_dev',
   },
 };
 const DB_QA = {
   DB: {
     host: 'localhost',
     username: 'root',
-    password: 'eventos_party_0112',
-    database: 'vacilar_dev',
+    password: 'Servicios_1803',
+    database: 'teknomaster_qa',
   },
 };
 const DB_PROD = {
   DB: {
-    host: 'matchpadel.database.windows.net',
-    username: 'matchpadel',
-    password: 'Padelball2020',
-    database: 'mathpadel',
+    host: 'localhost',
+    username: 'root',
+    password: 'Servicios_1803',
+    database: 'teknomaster',
   },
 };
 
