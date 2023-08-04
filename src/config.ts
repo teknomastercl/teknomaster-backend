@@ -1,4 +1,4 @@
-export const ENV: 'development' | 'qa' | 'production' = 'development';
+export const ENV: 'development' | 'qa' | 'production' = 'production';
 
 const DB_DEV = {
   DB: {
