@@ -1,5 +1,4 @@
 import { IsEmail } from 'class-validator';
-import { City } from 'src/city/city.entity';
 import { Users } from 'src/users/users.entity';
 import {
   Column,
