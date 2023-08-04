@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { CustomerService } from './customer.service';
-import { UpdateCustomerDto } from './dto/update-user.dto';
+import { createCustomerDto } from './dto/create-customer.dto';
 
 @Controller('customer')
 export class CustomerController {
@@ -13,8 +13,8 @@ export class CustomerController {
   }
 
   @Post('create')
-  async create(@Body() dto: UpdateCustomerDto) {
-    return await this.customerService.update(dto);
+  async create(@Body() dto: createCustomerDto) {
+    return await this.customerService.create(dto);
   }
 
   @Get('search')
@@ -22,9 +22,8 @@ export class CustomerController {
     const customers = await this.customerService.findAll(params.value);
     return { customers };
   }
-  @Post('update')
-  async update(@Body() dto: UpdateCustomerDto) {
-    return await this.customerService.update(dto);
-  }
-
+  // @Post('update')
+  // async update(@Body() dto: UpdateCustomerDto) {
+  //   return await this.customerService.update(dto);
+  // }
 }

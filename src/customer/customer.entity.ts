@@ -1,9 +1,11 @@
 import { IsEmail } from 'class-validator';
+import { CustomerType } from 'src/customer-type/customer-type.entity';
 import { Users } from 'src/users/users.entity';
 import {
   Column,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -35,4 +37,7 @@ export class Customer {
 
   @Column({ nullable: true })
   instagram: string;
+
+  @ManyToOne(() => CustomerType, (e) => e.customer)
+  customerType: CustomerType;
 }

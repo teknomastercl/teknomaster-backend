@@ -2,24 +2,24 @@ export const ENV: 'development' | 'qa' | 'production' = 'development';
 
 const DB_DEV = {
   DB: {
-    host: 'localhost',
-    username: 'root',
+    host: '170.239.85.68',
+    username: 'misa',
     password: 'Servicios_1803',
     database: 'teknomasterDev',
   },
 };
 const DB_QA = {
   DB: {
-    host: 'localhost',
-    username: 'root',
+    host: '170.239.85.68',
+    username: 'misa',
     password: 'Servicios_1803',
-    database: 'teknomaster_qa',
+    database: 'teknomasterQa',
   },
 };
 const DB_PROD = {
   DB: {
-    host: 'localhost',
-    username: 'root',
+    host: '170.239.85.68',
+    username: 'misa',
     password: 'Servicios_1803',
     database: 'teknomaster',
   },

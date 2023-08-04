@@ -2,11 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Like, Repository } from 'typeorm';
 import { Customer } from './customer.entity';
-import { UpdateCustomerDto } from './dto/update-user.dto';
 import {
   BlobServiceClient,
   StorageSharedKeyCredential,
 } from '@azure/storage-blob';
+import { createCustomerDto } from './dto/create-customer.dto';
 
 @Injectable()
 export class CustomerService {
@@ -57,19 +57,6 @@ export class CustomerService {
       return data;
     });
   }
-  async update(dto: UpdateCustomerDto) {
-    // Upload image
-    if (dto.img) {
-      const uploadImg = await this.uploadImgPerfil(dto.img);
-      dto.img = uploadImg.url;
-    }
-
-    const toUpdate = await this.customerRepository.findOne(dto.user_id);
-    const updated = Object.assign(toUpdate, dto);
-    const customer = await this.customerRepository.save(updated);
-    return customer;
-  }
-
   async uploadImgPerfil(file: string) {
     const account = 'matchpadel';
     const accountKey =
@@ -108,5 +95,16 @@ export class CustomerService {
       uploadBlobResponse,
       url: pathBlobCore + '/perfil/' + blobName,
     };
+  }
+
+  async create(dto: createCustomerDto) {
+    const newItem = new Customer();
+    newItem.first_name = dto.first_name;
+    newItem.last_name = dto.last_name;
+    newItem.email = dto.email;
+    newItem.phone = dto.phone;
+    newItem.instagram = dto.instagram;
+    const customer = await this.customerRepository.save(newItem);
+    return customer;
   }
 }
