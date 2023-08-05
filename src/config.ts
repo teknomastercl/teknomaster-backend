@@ -28,6 +28,7 @@ const DB_PROD = {
 const ALL = {
   SECRET: 'eventos_party_0112!2023',
   STORAGE: '../storage',
+  HOST_IP: '170.239.85.68',
 };
 
 function handleSend() {

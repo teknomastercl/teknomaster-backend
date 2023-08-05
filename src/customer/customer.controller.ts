@@ -77,7 +77,7 @@ export class CustomerController {
     const response = {
       originalname: file.originalname,
       filename: file.filename,
-      url: 'http://' + config.DB.host + direction + file.filename,
+      url: 'http://' + config.HOST_IP + direction + file.filename,
     };
     return { data: response };
   }
