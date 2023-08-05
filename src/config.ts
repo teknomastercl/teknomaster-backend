@@ -2,7 +2,7 @@ export const ENV: 'development' | 'qa' | 'production' = 'development';
 
 const DB_DEV = {
   DB: {
-    host: '170.239.85.68',
+    host: 'localhost',
     username: 'misa',
     password: 'Servicios_1803',
     database: 'teknomasterDev',
