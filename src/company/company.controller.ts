@@ -13,7 +13,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { editFileName } from 'src/utils/editFileName';
 import { imageFileFilter } from 'src/utils/imageFileFilter';
-import config from 'src/config';
+import config, { ENV } from 'src/config';
 
 const direction = `/company/img/`;
 const hostImg = `${config.STORAGE}/public${direction}`;
@@ -61,10 +61,11 @@ export class CompanyController {
     }),
   )
   async uploadedFile(@UploadedFile() file) {
+    const PORT = ENV === 'development' ? ':3500' : '';
     const response = {
       originalname: file.originalname,
       filename: file.filename,
-      url: 'http://' + config.HOST_IP + direction + file.filename,
+      url: 'http://' + config.HOST_IP + PORT + direction + file.filename,
     };
     return { data: response };
   }
