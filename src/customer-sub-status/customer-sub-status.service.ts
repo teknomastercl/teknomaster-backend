@@ -11,7 +11,13 @@ export class CustomerSubStatusService {
   ) {}
 
   async findAll() {
-    const res = this.customerSubStatusRepository.find();
+    const res = this.customerSubStatusRepository.find({
+      relations: ['customerStatus'],
+    });
+    return res;
+  }
+  async findOne(id) {
+    const res = this.customerSubStatusRepository.find(id);
     return res;
   }
 }

@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { CustomerSubStatusService } from './customer-sub-status.service';
 
 @Controller('customer-sub-status')
@@ -10,6 +10,14 @@ export class CustomerSubStatusController {
   @Get()
   async findAll() {
     const res = await this.customerSubStatusService.findAll();
+    return {
+      data: res,
+    };
+  }
+
+  @Get('/:id')
+  async findOne(@Query('id') id) {
+    const res = await this.customerSubStatusService.findOne(id);
     return {
       data: res,
     };

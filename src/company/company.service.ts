@@ -23,7 +23,7 @@ export class CompanyService {
   }
   async create(item) {
     const finder = await this.companyRepository.find({
-      where: { customer: item.user_id },
+      where: { customer: item.customer },
     });
     if (finder.length > 0) {
       return { error: 'Ya eres administrador de una empresa' };
@@ -32,7 +32,7 @@ export class CompanyService {
     const send = new Company();
     send.title = item.title;
     send.img = item.img;
-    send.customer = item.user_id;
+    send.customer = item.customer;
     const saved = await this.companyRepository.save(send);
     return saved;
   }

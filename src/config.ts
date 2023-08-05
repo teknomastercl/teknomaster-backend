@@ -27,6 +27,7 @@ const DB_PROD = {
 
 const ALL = {
   SECRET: 'eventos_party_0112!2023',
+  STORAGE: '../storage',
 };
 
 function handleSend() {

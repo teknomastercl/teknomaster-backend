@@ -8,6 +8,8 @@ import {
 } from '@azure/storage-blob';
 import { createCustomerDto } from './dto/create-customer.dto';
 import { Company } from 'src/company/company.entity';
+import { updateCustomerDto } from './dto/update-customer.dto';
+import { errorSend } from 'src/utils/errorSend';
 
 @Injectable()
 export class CustomerService {
@@ -134,6 +136,37 @@ export class CustomerService {
       resCompany = await this.companyRepository.save(newCompany);
     }
 
+    return { res, resCompany };
+  }
+
+  async update(dto: updateCustomerDto) {
+    const toUpdate = await this.customerRepository.findOne(dto.id);
+    if (!toUpdate) {
+      return errorSend(1, 'El ID de usuario no existe');
+    }
+    toUpdate.first_name = dto.first_name;
+    toUpdate.last_name = dto.last_name;
+    toUpdate.email = dto.email;
+    toUpdate.phone = dto.phone;
+    toUpdate.img = dto.img;
+    toUpdate.instagram = dto.instagram;
+    toUpdate.customerType = dto.customerType;
+    toUpdate.customerStatus = dto.customerStatus;
+    toUpdate.customerSubStatus = dto.customerSubStatus;
+    const res = await this.customerRepository.save(toUpdate);
+    return res;
+  }
+  async remove(id) {
+    const finder = await this.customerRepository.findOne(id);
+    if (!finder) {
+      return errorSend(1, 'El ID de usuario no existe');
+    }
+
+    const finderCompany = await this.companyRepository.find({
+      where: { customer: id },
+    });
+    const resCompany = await this.companyRepository.remove(finderCompany);
+    const res = await this.customerRepository.remove(finder);
     return { res, resCompany };
   }
 }
