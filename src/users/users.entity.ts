@@ -15,7 +15,7 @@ export class Users {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne(() => Customer, (e) => e.customer_id)
+  @OneToOne(() => Customer, (e) => e.user)
   customer: Customer;
 
   @Column()

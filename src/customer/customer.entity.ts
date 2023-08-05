@@ -1,4 +1,7 @@
 import { IsEmail } from 'class-validator';
+import { Company } from 'src/company/company.entity';
+import { CustomerStatus } from 'src/customer-status/customer-status.entity';
+import { CustomerSubStatus } from 'src/customer-sub-status/customer-sub-status.entity';
 import { CustomerType } from 'src/customer-type/customer-type.entity';
 import { Users } from 'src/users/users.entity';
 import {
@@ -6,6 +9,7 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -13,11 +17,11 @@ import {
 @Entity()
 export class Customer {
   @PrimaryGeneratedColumn()
-  customer_id: number;
+  id: number;
 
-  @OneToOne(() => Users, (e) => e.id)
-  @JoinColumn({ name: 'user_id' })
-  user_id: number;
+  @OneToOne(() => Users, (e) => e.customer)
+  @JoinColumn()
+  user: number;
 
   @Column({ nullable: true })
   first_name: string;
@@ -39,5 +43,14 @@ export class Customer {
   instagram: string;
 
   @ManyToOne(() => CustomerType, (e) => e.customer)
-  customerType: CustomerType;
+  customerType: CustomerType | number;
+
+  @ManyToOne(() => CustomerStatus, (e) => e.id)
+  customerStatus: CustomerStatus | number;
+
+  @ManyToOne(() => CustomerSubStatus, (e) => e.id)
+  customerSubStatus: CustomerSubStatus | number;
+
+  @OneToMany(() => Company, (e) => e.customer)
+  company: Company;
 }

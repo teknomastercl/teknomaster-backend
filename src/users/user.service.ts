@@ -97,7 +97,6 @@ export class UserService {
   }
   private async createCustomer(userId: number, dto: CreateUserDto) {
     const newCustomer = new Customer();
-    newCustomer.user_id = userId;
     newCustomer.first_name = dto.firstName;
     newCustomer.last_name = dto.lastName;
     newCustomer.email = dto.email;

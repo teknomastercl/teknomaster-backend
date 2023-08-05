@@ -31,7 +31,7 @@ export class CompanyService {
 
     const send = new Company();
     send.title = item.title;
-    send.image = item.image;
+    send.img = item.img;
     send.customer = item.user_id;
     const saved = await this.companyRepository.save(send);
     return saved;

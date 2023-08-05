@@ -12,7 +12,13 @@ export class CustomerController {
     return { customer };
   }
 
-  @Post('create')
+  @Get()
+  async obtainAll() {
+    const data = await this.customerService.obtainAll();
+    return { data };
+  }
+
+  @Post()
   async create(@Body() dto: createCustomerDto) {
     return await this.customerService.create(dto);
   }

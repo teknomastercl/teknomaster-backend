@@ -7,12 +7,15 @@ import {
   StorageSharedKeyCredential,
 } from '@azure/storage-blob';
 import { createCustomerDto } from './dto/create-customer.dto';
+import { Company } from 'src/company/company.entity';
 
 @Injectable()
 export class CustomerService {
   constructor(
     @InjectRepository(Customer)
     private readonly customerRepository: Repository<Customer>,
+    @InjectRepository(Company)
+    private readonly companyRepository: Repository<Company>,
   ) {}
 
   async findOne(user_id: number) {
@@ -22,6 +25,18 @@ export class CustomerService {
     });
     customer.user_id = customer.user_id.id;
     return customer;
+  }
+
+  async obtainAll() {
+    const res = this.customerRepository.find({
+      relations: [
+        'customerType',
+        'customerStatus',
+        'customerSubStatus',
+        'company',
+      ],
+    });
+    return res;
   }
 
   async findAll(value: string) {
@@ -103,8 +118,22 @@ export class CustomerService {
     newItem.last_name = dto.last_name;
     newItem.email = dto.email;
     newItem.phone = dto.phone;
+    newItem.img = dto.img;
     newItem.instagram = dto.instagram;
-    const customer = await this.customerRepository.save(newItem);
-    return customer;
+    newItem.customerType = dto.customerType;
+    newItem.customerStatus = dto.customerStatus;
+    newItem.customerSubStatus = dto.customerSubStatus;
+    const res = await this.customerRepository.save(newItem);
+
+    let resCompany = null;
+    if (dto.companyTitle) {
+      const newCompany = new Company();
+      newCompany.title = dto.companyTitle;
+      newCompany.img = dto.companyImg;
+      newCompany.customer = res.id;
+      resCompany = await this.companyRepository.save(newCompany);
+    }
+
+    return { res, resCompany };
   }
 }

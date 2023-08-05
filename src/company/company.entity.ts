@@ -16,11 +16,10 @@ export class Company {
   title: string;
 
   @Column({ nullable: true })
-  image: string;
+  img: string;
 
-  @ManyToOne(() => Customer, (e) => e)
-  @Column({ name: 'user_id' })
-  customer: string;
+  @ManyToOne(() => Customer, (e) => e.company)
+  customer: Customer | number;
 
   @CreateDateColumn()
   create_date: string;
