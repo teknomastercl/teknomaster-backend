@@ -15,7 +15,7 @@ import { editFileName } from 'src/utils/editFileName';
 import { imageFileFilter } from 'src/utils/imageFileFilter';
 import config from 'src/config';
 
-const direction = `/img/company/`;
+const direction = `/company/img/`;
 const hostImg = `${config.STORAGE}/public${direction}`;
 @Controller('company')
 export class CompanyController {
