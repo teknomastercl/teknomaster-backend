@@ -11,15 +11,15 @@ const DB_DEV = {
 const DB_QA = {
   DB: {
     host: '170.239.85.68',
-    username: 'misa',
+    username: 'root',
     password: 'Servicios_1803',
     database: 'teknomasterQa',
   },
 };
 const DB_PROD = {
   DB: {
-    host: '170.239.85.68',
-    username: 'misa',
+    host: 'localhost',
+    username: 'root',
     password: 'Servicios_1803',
     database: 'teknomaster',
   },
