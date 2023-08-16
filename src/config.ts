@@ -18,7 +18,7 @@ const DB_QA = {
 };
 const DB_PROD = {
   DB: {
-    host: '170.239.85.68',
+    host: 'localhost',
     username: 'root',
     password: 'Servicios_1803',
     database: 'teknomaster',
