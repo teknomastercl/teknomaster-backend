@@ -11,6 +11,14 @@ import { CustomerSubStatusModule } from './customer-sub-status/customer-sub-stat
 import { CustomerHistoryStatusModule } from './customer-history-status/customer-history-status.module';
 import { CustomerHistorySubStatusModule } from './customer-history-sub-status/customer-history-sub-status.module';
 import { CustomerTypeModule } from './customer-type/customer-type.module';
+import { CredentialModule } from './credential/credential.module';
+import { CrentialService } from './crential/crential.service';
+import { ProductModule } from './product/product.module';
+import { CompanyProductModule } from './company-product/company-product.module';
+import { ProductStatusModule } from './product-status/product-status.module';
+import { ProductSubStatusModule } from './product-sub-status/product-sub-status.module';
+import { ProductHistoryStatusModule } from './product-history-status/product-history-status.module';
+import { ProductHistorySubStatusModule } from './product-history-sub-status/product-history-sub-status.module';
 
 @Module({
   imports: [
@@ -34,9 +42,16 @@ import { CustomerTypeModule } from './customer-type/customer-type.module';
     CustomerHistoryStatusModule,
     CustomerHistorySubStatusModule,
     CustomerTypeModule,
+    CredentialModule,
+    ProductModule,
+    CompanyProductModule,
+    ProductStatusModule,
+    ProductSubStatusModule,
+    ProductHistoryStatusModule,
+    ProductHistorySubStatusModule,
   ],
   controllers: [AppController],
-  providers: [],
+  providers: [CrentialService],
 })
 export class AppModule {
   constructor(private connection: Connection) {}

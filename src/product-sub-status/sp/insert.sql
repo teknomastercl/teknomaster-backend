@@ -1,0 +1,14 @@
+INSERT INTO product_sub_status (productStatusId, title, description) VALUES (1, 'Cotizando', '');
+INSERT INTO product_sub_status (productStatusId, title, description) VALUES (1, 'Interesado', '');
+INSERT INTO product_sub_status (productStatusId, title, description) VALUES (1, 'Por pagar ', 'Agrega tu fecha posible de pago');
+INSERT INTO product_sub_status (productStatusId, title, description) VALUES (2, 'Cuestionario Cliente', '');
+INSERT INTO product_sub_status (productStatusId, title, description) VALUES (2, 'Traspaso información', '');
+INSERT INTO product_sub_status (productStatusId, title, description) VALUES (3, 'En desarrollo', '');
+INSERT INTO product_sub_status (productStatusId, title, description) VALUES (3, 'Entregado', '');
+INSERT INTO product_sub_status (productStatusId, title, description) VALUES (3, 'Aprobado', '');
+INSERT INTO product_sub_status (productStatusId, title, description) VALUES (4, 'En proceso', '');
+INSERT INTO product_sub_status (productStatusId, title, description) VALUES (4, 'Entregado', '');
+INSERT INTO product_sub_status (productStatusId, title, description) VALUES (4, 'Aprobado', '');
+INSERT INTO product_sub_status (productStatusId, title, description) VALUES (5, 'En proceso', '');
+INSERT INTO product_sub_status (productStatusId, title, description) VALUES (5, 'Entregado', '');
+INSERT INTO product_sub_status (productStatusId, title, description) VALUES (6, 'Espera pago', '');
