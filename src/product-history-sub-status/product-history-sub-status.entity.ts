@@ -6,12 +6,11 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { ProductStatus } from 'src/product-status/product-status.entity';
 import { Product } from 'src/product/product.entity';
 import { ProductSubStatus } from 'src/product-sub-status/product-sub-status.entity';
 
 @Entity()
-export class ProductHistorySubEntity {
+export class ProductHistorySubStatus {
   @PrimaryGeneratedColumn()
   id: number;
 

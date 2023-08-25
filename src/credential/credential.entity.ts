@@ -1,14 +1,8 @@
 import { Company } from 'src/company/company.entity';
 import { Customer } from 'src/customer/customer.entity';
 import { Product } from 'src/product/product.entity';
-import { Users } from 'src/users/users.entity';
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { User } from 'src/user/user.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Credential {
@@ -22,9 +16,6 @@ export class Credential {
   title: string;
 
   @Column({ nullable: true })
-  user: string;
-
-  @Column({ nullable: true })
   pass: string;
 
   @ManyToOne(() => Customer, (e) => e.id)
@@ -36,6 +27,6 @@ export class Credential {
   @ManyToOne(() => Product, (e) => e.id)
   product: Product | number;
 
-  @ManyToOne(() => Users, (e) => e.id)
-  users: Users | number;
+  @ManyToOne(() => User, (e) => e.id)
+  user: User | number;
 }

@@ -20,12 +20,10 @@ export class CustomerService {
     private readonly companyRepository: Repository<Company>,
   ) {}
 
-  async findOne(user_id: number) {
+  async findOne(id: number) {
     const customer: any = await this.customerRepository.findOne({
-      where: { user_id },
-      relations: ['user_id'],
+      where: { id },
     });
-    customer.user_id = customer.user_id.id;
     return customer;
   }
 
@@ -44,7 +42,7 @@ export class CustomerService {
   async findAll(value: string) {
     // const customer = this.customerRepository
     //   .createQueryBuilder('customer')
-    //   .leftJoinAndSelect('customer.user_id', 'users')
+    //   .leftJoinAndSelect('customer.user_id', 'user')
     //   .where(
     //     'first_name LIKE :value\
     //     OR last_name LIKE :value\
@@ -121,7 +119,6 @@ export class CustomerService {
     newItem.email = dto.email;
     newItem.phone = dto.phone;
     newItem.img = dto.img;
-    newItem.instagram = dto.instagram;
     newItem.customerType = dto.customerType;
     newItem.customerStatus = dto.customerStatus;
     newItem.customerSubStatus = dto.customerSubStatus;
@@ -132,6 +129,7 @@ export class CustomerService {
       const newCompany = new Company();
       newCompany.title = dto.companyTitle;
       newCompany.img = dto.companyImg;
+      newCompany.instagram = dto.companyInstagram;
       newCompany.customer = res.id;
       resCompany = await this.companyRepository.save(newCompany);
     }
@@ -149,7 +147,6 @@ export class CustomerService {
     toUpdate.email = dto.email;
     toUpdate.phone = dto.phone;
     toUpdate.img = dto.img;
-    toUpdate.instagram = dto.instagram;
     toUpdate.customerType = dto.customerType;
     toUpdate.customerStatus = dto.customerStatus;
     toUpdate.customerSubStatus = dto.customerSubStatus;

@@ -1,13 +1,4 @@
-import { IsEmail } from 'class-validator';
-import { Users } from 'src/users/users.entity';
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  OneToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { CustomerStatus } from 'src/customer-status/customer-status.entity';
 
 @Entity()

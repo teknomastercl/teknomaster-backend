@@ -5,7 +5,7 @@ const DB_DEV = {
     host: 'localhost',
     username: 'root',
     password: 'Servicios_1803',
-    database: 'teknomasterDev',
+    database: 'teknomaster_dev',
   },
 };
 const DB_QA = {

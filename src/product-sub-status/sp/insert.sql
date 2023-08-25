@@ -12,3 +12,5 @@ INSERT INTO product_sub_status (productStatusId, title, description) VALUES (4, 
 INSERT INTO product_sub_status (productStatusId, title, description) VALUES (5, 'En proceso', '');
 INSERT INTO product_sub_status (productStatusId, title, description) VALUES (5, 'Entregado', '');
 INSERT INTO product_sub_status (productStatusId, title, description) VALUES (6, 'Espera pago', '');
+INSERT INTO product_sub_status (productStatusId, title, description) VALUES (7, 'Entregar', '');
+INSERT INTO product_sub_status (productStatusId, title, description) VALUES (7, 'Finalizado', '');
