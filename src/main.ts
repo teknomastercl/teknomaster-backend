@@ -16,7 +16,12 @@ async function bootstrap() {
   app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
   app.use(bodyParser.json({ limit: '50mb' }));
   app.enableCors({
-    origin: ['http://localhost:3000', 'https://api.teknomaster.cl'],
+    origin: [
+      'http://localhost:3000',
+      'https://backoffice.teknomaster.cl',
+      'https://teknomaster.cl',
+      'https://www.teknomaster.cl',
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   });
