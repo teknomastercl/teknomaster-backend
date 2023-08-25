@@ -66,7 +66,7 @@ export class CompanyController {
     const response = {
       originalname: file.originalname,
       filename: file.filename,
-      url: 'http://' + config.HOST_IP + PORT + direction + file.filename,
+      url: config.HOST_IP + PORT + direction + file.filename,
     };
     return { data: response };
   }
