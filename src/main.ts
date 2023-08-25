@@ -15,7 +15,11 @@ async function bootstrap() {
   // const app = await NestFactory.create(AppModule, {httpsOptions});
   app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
   app.use(bodyParser.json({ limit: '50mb' }));
-  app.enableCors();
+  app.enableCors({
+    origin: ['http://localhost:3000', 'https://api.teknomaster.cl'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+  });
   const port = ENV === 'development' ? 3500 : 3000;
   await app.listen(process.env.PORT || port);
 }
