@@ -18,6 +18,15 @@ export class Company {
   @Column({ nullable: true })
   img: string;
 
+  @Column({ nullable: true })
+  email: string;
+
+  @Column({ nullable: true })
+  phone: string;
+
+  @Column({ nullable: true })
+  instagram: string;
+
   @ManyToOne(() => Customer, (e) => e.company)
   customer: Customer | number;
 

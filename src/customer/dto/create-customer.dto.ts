@@ -10,4 +10,5 @@ export class createCustomerDto {
   readonly customerSubStatus?: number;
   readonly companyTitle?: string;
   readonly companyImg?: string;
+  readonly companyInstagram?: string;
 }

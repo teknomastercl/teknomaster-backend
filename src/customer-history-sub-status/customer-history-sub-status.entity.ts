@@ -1,20 +1,16 @@
-import { IsEmail } from 'class-validator';
-import { Users } from 'src/users/users.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinColumn,
   ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { CustomerStatus } from 'src/customer-status/customer-status.entity';
 import { Customer } from 'src/customer/customer.entity';
 import { CustomerSubStatus } from 'src/customer-sub-status/customer-sub-status.entity';
 
 @Entity()
-export class CustomerHistorySubEntity {
+export class CustomerHistorySubStatus {
   @PrimaryGeneratedColumn()
   id: number;
 

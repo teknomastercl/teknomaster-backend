@@ -3,14 +3,12 @@ import { Company } from 'src/company/company.entity';
 import { CustomerStatus } from 'src/customer-status/customer-status.entity';
 import { CustomerSubStatus } from 'src/customer-sub-status/customer-sub-status.entity';
 import { CustomerType } from 'src/customer-type/customer-type.entity';
-import { Users } from 'src/users/users.entity';
 import {
+  BeforeInsert,
   Column,
   Entity,
-  JoinColumn,
   ManyToOne,
   OneToMany,
-  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -18,10 +16,6 @@ import {
 export class Customer {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @OneToOne(() => Users, (e) => e.customer)
-  @JoinColumn()
-  user: number;
 
   @Column({ nullable: true })
   first_name: string;
@@ -39,9 +33,6 @@ export class Customer {
   @Column({ nullable: true })
   img: string;
 
-  @Column({ nullable: true })
-  instagram: string;
-
   @ManyToOne(() => CustomerType, (e) => e.customer)
   customerType: CustomerType | number;
 
@@ -53,4 +44,9 @@ export class Customer {
 
   @OneToMany(() => Company, (e) => e.customer)
   company: Company;
+
+  @BeforeInsert()
+  async beforeInsertActions() {
+    this.customerType = 0;
+  }
 }

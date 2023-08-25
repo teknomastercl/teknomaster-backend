@@ -1,8 +1,8 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { CustomerStatus } from 'src/customer-status/customer-status.entity';
+import { ProductStatus } from 'src/product-status/product-status.entity';
 
 @Entity()
-export class CustomerSubStatus {
+export class ProductSubStatus {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -12,6 +12,6 @@ export class CustomerSubStatus {
   @Column({ nullable: true })
   description: string;
 
-  @ManyToOne(() => CustomerStatus, (e) => e.customerSubStatus)
-  customerStatus: CustomerStatus;
+  @ManyToOne(() => ProductStatus, (e) => e.productSubStatus)
+  productStatus: ProductStatus | number;
 }

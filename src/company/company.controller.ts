@@ -4,6 +4,7 @@ import {
   Get,
   Param,
   Post,
+  Put,
   Res,
   UploadedFile,
   UseInterceptors,
@@ -19,7 +20,7 @@ const direction = `/company/img/`;
 const hostImg = `${config.STORAGE}/public${direction}`;
 @Controller('company')
 export class CompanyController {
-  constructor(private readonly companyService: CompanyService) {}
+  constructor(private readonly companyService: CompanyService) { }
   @Get()
   async findAll() {
     const data = await this.companyService.findAll();
@@ -36,9 +37,9 @@ export class CompanyController {
     };
   }
 
-  @Get('/user/:id')
+  @Get('/customer/:id')
   async findByUserId(@Param('id') id) {
-    const data = await this.companyService.findByUserId(id);
+    const data = await this.companyService.findByCustomerId(id);
     return {
       data,
     };
@@ -75,5 +76,11 @@ export class CompanyController {
     return res.sendFile(image, {
       root: hostImg,
     });
+  }
+
+  @Put()
+  async update(@Body() dto) {
+    const data = await this.companyService.update(dto);
+    return data;
   }
 }

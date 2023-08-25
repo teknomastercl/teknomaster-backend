@@ -1,14 +1,5 @@
-import { IsEmail } from 'class-validator';
 import { CustomerSubStatus } from 'src/customer-sub-status/customer-sub-status.entity';
-import { Customer } from 'src/customer/customer.entity';
-import { Users } from 'src/users/users.entity';
-import {
-  Column,
-  Entity,
-  OneToMany,
-  OneToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class CustomerStatus {
