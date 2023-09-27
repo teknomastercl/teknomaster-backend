@@ -2,7 +2,6 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as bodyParser from 'body-parser';
 import { ENV } from './config';
-import * as fs from 'fs';
 
 // const httpsOptions = {
 //   key: fs.readFileSync('../certificados/server.key'),
@@ -21,11 +20,12 @@ async function bootstrap() {
       'https://backoffice.teknomaster.cl',
       'https://teknomaster.cl',
       'https://www.teknomaster.cl',
+      'http://localhost:3500',
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   });
-  const port = ENV === 'development' ? 3500 : 3000;
+  const port = ENV === 'development' ? 3500 : 80;
   await app.listen(process.env.PORT || port);
 }
 bootstrap();
