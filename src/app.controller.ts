@@ -4,6 +4,6 @@ import { Controller, Get } from '@nestjs/common';
 export class AppController {
   @Get()
   findAll(): string {
-    return 'Bienvenido a mi api de nestjs 🚀';
+    return 'Bienvenido a la api de Tekno Master 🚀';
   }
 }
