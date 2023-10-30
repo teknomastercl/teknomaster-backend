@@ -70,7 +70,7 @@ export class CompanyProductService {
 
     const newLog = new ProductHistoryStatus();
     newLog.note = dto.note;
-    newLog.date = dto.date;
+    newLog.date = dto.date || null;
     newLog.companyProduct = res.id;
     newLog.productStatus = dto.productStatus;
     newLog.productSubStatus = send.productSubStatus;
