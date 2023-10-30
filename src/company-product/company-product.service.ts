@@ -53,7 +53,7 @@ export class CompanyProductService {
 
   async changeStatus(dto: changeStatusDto) {
     const send: any = await this.repository.findOne({
-      where: { company: dto.id },
+      where: { id: dto.id },
     });
     if (!send) {
       return errorSend(1, 'No se econtró el producto');

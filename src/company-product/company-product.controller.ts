@@ -35,7 +35,7 @@ export class CompanyProductController {
   @Put('/status')
   async changeStatus(@Body() dto) {
     const data = await this.service.changeStatus(dto);
-    return { data };
+    return data;
   }
   @Put('/sub-status')
   async changeSubStatus(@Body() dto) {
