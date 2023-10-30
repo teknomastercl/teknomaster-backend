@@ -31,7 +31,7 @@ export class CompanyProductService {
   async findByCompany(id: number) {
     const send: any = await this.repository.find({
       where: { company: id },
-      relations: ['product'],
+      relations: ['product', 'productStatus', 'productSubStatus'],
     });
     return send;
   }
