@@ -21,10 +21,20 @@ export class CustomerService {
   ) {}
 
   async findOne(id: number) {
-    const customer: any = await this.customerRepository.findOne({
+    const finder: any = await this.customerRepository.findOne({
       where: { id },
     });
-    return customer;
+    if (!finder) {
+      return errorSend(1, 'No existe el cliente');
+    }
+    const findCompany = await this.companyRepository.find({
+      where: { customer: id },
+    });
+    const data = {
+      ...finder,
+      company: findCompany,
+    };
+    return data;
   }
 
   async obtainAll() {

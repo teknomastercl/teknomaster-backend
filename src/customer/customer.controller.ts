@@ -29,7 +29,7 @@ export class CustomerController {
   @Get('/:id')
   async findOne(@Param('id') id) {
     const data = await this.customerService.findOne(id);
-    return { data };
+    return data;
   }
 
   @Get()

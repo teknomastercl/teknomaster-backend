@@ -141,11 +141,12 @@ export class CompanyProductService {
     }
     const finder = await this.repository.find({
       where: { company },
+      relations: ['product'],
     });
     if (finder.length < 1) {
       return errorSend(2, 'No tienes al menos un producto creado');
     }
-    const firstItem = finder[0];
+    const firstItem: any = finder[0];
 
     const res = await this.productHistoryStatusRepository.find({
       where: { companyProduct: firstItem.id },
@@ -160,6 +161,10 @@ export class CompanyProductService {
       );
     }
     const firstCP = res[0];
-    return firstCP;
+    const data = {
+      ...firstCP,
+      productId: firstItem.product.id,
+    };
+    return data;
   }
 }
