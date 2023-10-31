@@ -25,7 +25,7 @@ async function bootstrap() {
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   });
-  const port = ENV === 'development' ? 3500 : 3000;
+  const port = ENV === 'development' ? 3100 : 3000;
   await app.listen(process.env.PORT || port);
 }
 bootstrap();
