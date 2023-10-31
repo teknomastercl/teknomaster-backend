@@ -29,6 +29,7 @@ const ALL = {
   SECRET: 'eventos_party_0112!2023',
   STORAGE: '../storage',
   HOST_IP: 'https://api.teknomaster.cl',
+  ENV,
 };
 
 function handleSend() {
