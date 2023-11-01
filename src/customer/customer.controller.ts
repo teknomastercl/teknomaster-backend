@@ -74,11 +74,10 @@ export class CustomerController {
   )
   async uploadedFile(@UploadedFile() file) {
     console.log('file', file);
-    const PORT = ENV === 'development' ? ':3500' : '';
     const response = {
       originalname: file.originalname,
       filename: file.filename,
-      url: config.HOST_IP + PORT + direction + file.filename,
+      url: config.HOST_IP + direction + file.filename,
     };
     return { data: response };
   }
