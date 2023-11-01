@@ -21,6 +21,8 @@ import { ProductHistorySubStatusModule } from './product-history-sub-status/prod
 import { TaskModule } from './task/task.module';
 import { TaskListModule } from './task-list/task-list.module';
 import { TaskStatusModule } from './task-status/task-status.module';
+import { PreCustomerModule } from './pre-customer/pre-customer.module';
+import { PreCustomerProductModule } from './pre-customer-product/pre-customer-product.module';
 
 @Module({
   imports: [
@@ -54,6 +56,8 @@ import { TaskStatusModule } from './task-status/task-status.module';
     TaskModule,
     TaskListModule,
     TaskStatusModule,
+    PreCustomerModule,
+    PreCustomerProductModule,
   ],
   controllers: [AppController],
   providers: [],
