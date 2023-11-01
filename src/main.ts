@@ -18,6 +18,7 @@ async function bootstrap() {
     origin: [
       'http://localhost:3000',
       'https://backoffice.teknomaster.cl',
+      'https://backofficedev.teknomaster.cl',
       'https://teknomaster.cl',
       'https://www.teknomaster.cl',
       'http://localhost:3500',
