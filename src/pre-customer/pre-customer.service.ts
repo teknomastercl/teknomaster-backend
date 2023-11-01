@@ -19,6 +19,27 @@ export class PreCustomerService {
     private readonly productRepository: Repository<Product>,
   ) {}
 
+  async findOne(id: number) {
+    const finder: any = await this.repository.findOne({
+      where: { id },
+    });
+
+    if (!finder) {
+      return errorSend(1, 'No existe el posible cliente');
+    }
+
+    const resCP = await this.preCustomerProductRepository.find({
+      where: { preCustomer: finder },
+    });
+
+    return {
+      data: {
+        ...finder,
+        products: resCP,
+      },
+    };
+  }
+
   async obtainAll() {
     const res = await this.repository.find({
       order: {
