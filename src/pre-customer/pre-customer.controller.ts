@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { PreCustomerService } from './pre-customer.service';
 import { createPreCustomerDto } from './dto/create-pre-customer.dto';
 import { updatePreCustomerDto } from './dto/update-pre-customer.dto';
@@ -6,6 +6,12 @@ import { updatePreCustomerDto } from './dto/update-pre-customer.dto';
 @Controller('pre-customer')
 export class PreCustomerController {
   constructor(private readonly service: PreCustomerService) {}
+
+  @Get('/:id')
+  async findOne(@Param('id') id) {
+    const data = await this.service.findOne(id);
+    return data;
+  }
 
   @Get()
   async obtainAll() {
