@@ -6,6 +6,7 @@ import { CustomerType } from 'src/customer-type/customer-type.entity';
 import {
   BeforeInsert,
   Column,
+  CreateDateColumn,
   Entity,
   ManyToOne,
   OneToMany,
@@ -44,6 +45,9 @@ export class Customer {
 
   @OneToMany(() => Company, (e) => e.customer)
   company: Company;
+
+  @CreateDateColumn()
+  created: string;
 
   @BeforeInsert()
   async beforeInsertActions() {
