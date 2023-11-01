@@ -18,7 +18,7 @@ export class CustomerService {
     private readonly customerRepository: Repository<Customer>,
     @InjectRepository(Company)
     private readonly companyRepository: Repository<Company>,
-  ) { }
+  ) {}
 
   async findOne(id: number) {
     const finder: any = await this.customerRepository.findOne({
@@ -38,13 +38,16 @@ export class CustomerService {
   }
 
   async obtainAll() {
-    const res = this.customerRepository.find({
+    const res = await this.customerRepository.find({
       relations: [
         'customerType',
         'customerStatus',
         'customerSubStatus',
         'company',
       ],
+      order: {
+        created: 'DESC',
+      },
     });
     return res;
   }
