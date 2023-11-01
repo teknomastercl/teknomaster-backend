@@ -69,11 +69,13 @@ export class CustomerController {
         destination: hostImg,
         filename: editFileName,
       }),
-      fileFilter: imageFileFilter,
     }),
   )
   async uploadedFile(@UploadedFile() file) {
-    console.log('file', file);
+    const filter = imageFileFilter(file.originalname);
+    if (filter) {
+      return filter;
+    }
     const response = {
       originalname: file.originalname,
       filename: file.filename,
