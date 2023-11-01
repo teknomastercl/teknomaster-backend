@@ -66,10 +66,13 @@ export class UserController {
         destination: hostImg,
         filename: editFileName,
       }),
-      fileFilter: imageFileFilter,
     }),
   )
   async uploadedFile(@UploadedFile() file) {
+    const filter = imageFileFilter(file.originalname);
+    if (filter) {
+      return filter;
+    }
     const response = {
       originalname: file.originalname,
       filename: file.filename,
