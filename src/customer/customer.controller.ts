@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Headers,
   Param,
   Post,
   Put,
@@ -72,12 +73,13 @@ export class CustomerController {
       fileFilter: imageFileFilter,
     }),
   )
-  async uploadedFile(@UploadedFile() file) {
+  async uploadedFile(@UploadedFile() file, @Headers() headers) {
+    console.log('headers', headers.host);
     console.log('file', file);
     const response = {
       originalname: file.originalname,
       filename: file.filename,
-      url: config.HOST_IP + direction + file.filename,
+      url: headers.host + direction + file.filename,
     };
     return { data: response };
   }
