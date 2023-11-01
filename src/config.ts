@@ -7,6 +7,7 @@ const DB_DEV = {
     password: 'Servicios_1803',
     database: 'teknomasterDev',
   },
+  HOST_IP: 'https://apidev.teknomaster.cl',
 };
 const DB_QA = {
   DB: {
@@ -15,6 +16,7 @@ const DB_QA = {
     password: 'Servicios_1803',
     database: 'teknomasterQa',
   },
+  HOST_IP: 'https://apiqa.teknomaster.cl',
 };
 const DB_PROD = {
   DB: {
@@ -23,12 +25,12 @@ const DB_PROD = {
     password: 'Servicios_1803',
     database: 'teknomaster',
   },
+  HOST_IP: 'https://api.teknomaster.cl',
 };
 
 const ALL = {
   SECRET: 'eventos_party_0112!2023',
   STORAGE: '../storage',
-  HOST_IP: 'https://api.teknomaster.cl',
   ENV,
 };
 

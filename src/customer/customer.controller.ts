@@ -3,7 +3,6 @@ import {
   Controller,
   Delete,
   Get,
-  Headers,
   Param,
   Post,
   Put,
@@ -19,7 +18,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { editFileName } from 'src/utils/editFileName';
 import { imageFileFilter } from 'src/utils/imageFileFilter';
-import config, { ENV } from 'src/config';
+import config from 'src/config';
 
 const direction = `/customer/img/`;
 const hostImg = `${config.STORAGE}/public${direction}`;
@@ -73,13 +72,12 @@ export class CustomerController {
       fileFilter: imageFileFilter,
     }),
   )
-  async uploadedFile(@UploadedFile() file, @Headers() headers) {
-    console.log('headers', headers.host);
+  async uploadedFile(@UploadedFile() file) {
     console.log('file', file);
     const response = {
       originalname: file.originalname,
       filename: file.filename,
-      url: headers.host + direction + file.filename,
+      url: config.HOST_IP + direction + file.filename,
     };
     return { data: response };
   }
