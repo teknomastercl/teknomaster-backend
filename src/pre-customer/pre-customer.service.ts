@@ -5,7 +5,6 @@ import { Repository } from 'typeorm';
 import { createPreCustomerDto } from './dto/create-pre-customer.dto';
 import { updatePreCustomerDto } from './dto/update-pre-customer.dto';
 import { PreCustomerProduct } from 'src/pre-customer-product/pre-customer-product.entity';
-import { Product } from 'src/product/product.entity';
 import { errorSend } from 'src/utils/errorSend';
 
 @Injectable()
@@ -15,8 +14,6 @@ export class PreCustomerService {
     private readonly repository: Repository<PreCustomer>,
     @InjectRepository(PreCustomerProduct)
     private readonly preCustomerProductRepository: Repository<PreCustomerProduct>,
-    @InjectRepository(Product)
-    private readonly productRepository: Repository<Product>,
   ) {}
 
   async findOne(id: number) {
@@ -30,6 +27,7 @@ export class PreCustomerService {
 
     const resCP = await this.preCustomerProductRepository.find({
       where: { preCustomer: finder },
+      relations: ['product'],
     });
 
     return {
