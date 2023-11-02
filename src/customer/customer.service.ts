@@ -20,8 +20,8 @@ export class CustomerService {
     private readonly customerRepository: Repository<Customer>,
     @InjectRepository(Company)
     private readonly companyRepository: Repository<Company>,
-    @InjectRepository(Product)
-    private readonly productRepository: Repository<Product>,
+    @InjectRepository(CompanyProduct)
+    private readonly companyProductRepository: Repository<CompanyProduct>,
   ) {}
 
   async findOne(id: number) {
@@ -160,7 +160,7 @@ export class CustomerService {
           newCProduct.company = resCompany.id;
           newCProduct.product = item.product;
           newCProduct.title = item.description;
-          const resProd = await this.productRepository.save(newCProduct);
+          const resProd = await this.companyProductRepository.save(newCProduct);
           resProducts.push(resProd);
         }),
       );
