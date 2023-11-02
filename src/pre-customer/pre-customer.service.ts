@@ -81,7 +81,9 @@ export class PreCustomerService {
           newProduct.preCustomer = res;
           newProduct.product = e.product;
           newProduct.description = e.description;
-          resProducts.push(await this.productRepository.save(newProduct));
+          resProducts.push(
+            await this.preCustomerProductRepository.save(newProduct),
+          );
         }),
       );
     }
