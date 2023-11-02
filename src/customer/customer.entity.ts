@@ -21,10 +21,7 @@ export class Customer {
   id: number;
 
   @Column({ nullable: true })
-  first_name: string;
-
-  @Column({ nullable: true })
-  last_name: string;
+  name: string;
 
   @Column({ nullable: true })
   phone: string;
