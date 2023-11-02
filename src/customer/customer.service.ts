@@ -131,8 +131,7 @@ export class CustomerService {
 
   async create(dto: createCustomerDto) {
     const newItem = new Customer();
-    newItem.first_name = dto.first_name;
-    newItem.last_name = dto.last_name;
+    newItem.name = dto.name;
     newItem.email = dto.email;
     newItem.phone = dto.phone;
     newItem.img = dto.img;
