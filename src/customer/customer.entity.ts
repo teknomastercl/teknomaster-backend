@@ -3,6 +3,7 @@ import { Company } from 'src/company/company.entity';
 import { CustomerStatus } from 'src/customer-status/customer-status.entity';
 import { CustomerSubStatus } from 'src/customer-sub-status/customer-sub-status.entity';
 import { CustomerType } from 'src/customer-type/customer-type.entity';
+import { PreCustomer } from 'src/pre-customer/pre-customer.entity';
 import {
   BeforeInsert,
   Column,
@@ -10,6 +11,7 @@ import {
   Entity,
   ManyToOne,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -19,10 +21,7 @@ export class Customer {
   id: number;
 
   @Column({ nullable: true })
-  first_name: string;
-
-  @Column({ nullable: true })
-  last_name: string;
+  name: string;
 
   @Column({ nullable: true })
   phone: string;
@@ -48,6 +47,9 @@ export class Customer {
 
   @CreateDateColumn()
   created: string;
+
+  @OneToOne(() => PreCustomer, (e) => e.customer)
+  preCustomer: PreCustomer | number;
 
   @BeforeInsert()
   async beforeInsertActions() {
