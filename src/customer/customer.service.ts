@@ -173,8 +173,7 @@ export class CustomerService {
     if (!toUpdate) {
       return errorSend(1, 'El ID del cliente no existe');
     }
-    toUpdate.first_name = dto.first_name;
-    toUpdate.last_name = dto.last_name;
+    toUpdate.name = dto.name;
     toUpdate.email = dto.email;
     toUpdate.phone = dto.phone;
     toUpdate.img = dto.img;
