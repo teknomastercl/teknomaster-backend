@@ -1,8 +1,10 @@
 import { IsEmail } from 'class-validator';
+import { Customer } from 'src/customer/customer.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -29,6 +31,9 @@ export class PreCustomer {
 
   @Column({ nullable: true })
   comment: string;
+
+  @OneToOne(() => Customer, (e) => e.preCustomer)
+  customer: Customer | number;
 
   @CreateDateColumn()
   created: string;

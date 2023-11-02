@@ -10,6 +10,8 @@ import { createCustomerDto } from './dto/create-customer.dto';
 import { Company } from 'src/company/company.entity';
 import { updateCustomerDto } from './dto/update-customer.dto';
 import { errorSend } from 'src/utils/errorSend';
+import { CompanyProduct } from 'src/company-product/company-product.entity';
+import { Product } from 'src/product/product.entity';
 
 @Injectable()
 export class CustomerService {
@@ -18,6 +20,8 @@ export class CustomerService {
     private readonly customerRepository: Repository<Customer>,
     @InjectRepository(Company)
     private readonly companyRepository: Repository<Company>,
+    @InjectRepository(Product)
+    private readonly productRepository: Repository<Product>,
   ) {}
 
   async findOne(id: number) {
@@ -135,6 +139,7 @@ export class CustomerService {
     newItem.customerType = dto.customerType;
     newItem.customerStatus = dto.customerStatus;
     newItem.customerSubStatus = dto.customerSubStatus;
+    newItem.preCustomer = dto.preClientId;
     const res = await this.customerRepository.save(newItem);
 
     let resCompany = null;
@@ -147,13 +152,27 @@ export class CustomerService {
       resCompany = await this.companyRepository.save(newCompany);
     }
 
-    return { res, resCompany };
+    const resProducts = [];
+    if (dto.products) {
+      await Promise.all(
+        dto.products.map(async (item) => {
+          const newCProduct = new CompanyProduct();
+          newCProduct.company = resCompany.id;
+          newCProduct.product = item.product;
+          newCProduct.title = item.description;
+          const resProd = await this.productRepository.save(newCProduct);
+          resProducts.push(resProd);
+        }),
+      );
+    }
+
+    return { res, resCompany, resProducts };
   }
 
   async update(dto: updateCustomerDto) {
     const toUpdate = await this.customerRepository.findOne(dto.id);
     if (!toUpdate) {
-      return errorSend(1, 'El ID de usuario no existe');
+      return errorSend(1, 'El ID del cliente no existe');
     }
     toUpdate.first_name = dto.first_name;
     toUpdate.last_name = dto.last_name;

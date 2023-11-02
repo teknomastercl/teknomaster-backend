@@ -11,4 +11,11 @@ export class createCustomerDto {
   readonly companyTitle?: string;
   readonly companyImg?: string;
   readonly companyInstagram?: string;
+  readonly preClientId?: number;
+  readonly products?: Products[];
+}
+
+interface Products {
+  product: number;
+  description: string;
 }
