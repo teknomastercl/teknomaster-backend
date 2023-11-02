@@ -11,7 +11,10 @@ export class PreCustomerProductService {
     private readonly repository: Repository<PreCustomerProduct>,
   ) {}
   async findByPreCustomer(id) {
-    const item = await this.repository.find({ where: { preCustomer: id } });
+    const item = await this.repository.find({
+      where: { preCustomer: id },
+      relations: ['product'],
+    });
     return item;
   }
 
