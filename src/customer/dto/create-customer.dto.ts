@@ -11,9 +11,15 @@ export class createCustomerDto {
   readonly companyInstagram?: string;
   readonly preClientId?: number;
   readonly products?: Products[];
+  readonly paymentQuotas?: Quotas[];
 }
 
 interface Products {
   product: number;
   description: string;
+}
+
+interface Quotas {
+  position: number;
+  date: string;
 }

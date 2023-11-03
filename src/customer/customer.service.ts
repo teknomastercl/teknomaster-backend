@@ -12,6 +12,7 @@ import { updateCustomerDto } from './dto/update-customer.dto';
 import { errorSend } from 'src/utils/errorSend';
 import { CompanyProduct } from 'src/company-product/company-product.entity';
 import { Product } from 'src/product/product.entity';
+import { PaymentsQuotas } from 'src/payments-quotas/payments-quotas.entity';
 
 @Injectable()
 export class CustomerService {
@@ -161,6 +162,20 @@ export class CustomerService {
           newCProduct.title = item.description;
           const resProd = await this.companyProductRepository.save(newCProduct);
           resProducts.push(resProd);
+        }),
+      );
+    }
+
+    const resQuotas = [];
+    if (dto.paymentQuotas) {
+      await Promise.all(
+        dto.paymentQuotas.map(async (item) => {
+          const newCProduct = new PaymentsQuotas();
+          newCProduct.customer = newItem.id;
+          newCProduct.date = item.date;
+          newCProduct.poisiton = item.position;
+          const resPay = await this.companyProductRepository.save(newCProduct);
+          resQuotas.push(resPay);
         }),
       );
     }
