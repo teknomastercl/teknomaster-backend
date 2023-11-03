@@ -23,6 +23,7 @@ import { TaskListModule } from './task-list/task-list.module';
 import { TaskStatusModule } from './task-status/task-status.module';
 import { PreCustomerModule } from './pre-customer/pre-customer.module';
 import { PreCustomerProductModule } from './pre-customer-product/pre-customer-product.module';
+import { PaymentsQuotasModule } from './payments-quotas/payments-quotas.module';
 
 @Module({
   imports: [
@@ -58,6 +59,7 @@ import { PreCustomerProductModule } from './pre-customer-product/pre-customer-pr
     TaskStatusModule,
     PreCustomerModule,
     PreCustomerProductModule,
+    PaymentsQuotasModule,
   ],
   controllers: [AppController],
   providers: [],
